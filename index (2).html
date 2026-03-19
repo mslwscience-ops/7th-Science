@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7th Grade Science — Student Activities</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a4a2e;
+    --green-mid:  #2d7a4f;
+    --green-pale: #e8f5ee;
+    --border:     #b2d4be;
+    --bg:         #f4f9f6;
+    --text:       #1c2e24;
+    --shadow:     0 4px 16px rgba(26,74,46,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 60px; }
+
+  header { background: linear-gradient(120deg, var(--green-dark) 0%, var(--green-mid) 100%); color: white; padding: 30px 36px 24px; }
+  header h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 900; margin-bottom: 6px; }
+  header p { font-size: 14px; opacity: .8; }
+  .hdr-tags { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 13px; font-size: 11px; font-weight: 700; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 32px 20px; display: flex; flex-direction: column; gap: 32px; }
+
+  .unit-block { display: flex; flex-direction: column; gap: 14px; }
+
+  .unit-label { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--green-mid); }
+  .unit-label::after { content: ''; flex: 1; height: 2px; background: var(--border); border-radius: 2px; }
+
+  .activity-card { background: white; border-radius: 14px; border: 2px solid var(--border); box-shadow: var(--shadow); padding: 18px 22px; display: flex; align-items: center; gap: 18px; text-decoration: none; color: var(--text); transition: transform .15s, box-shadow .15s, border-color .15s; }
+  .activity-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,74,46,0.15); border-color: var(--green-mid); }
+  .card-icon { font-size: 30px; flex-shrink: 0; }
+  .card-title { font-size: 15px; font-weight: 900; color: var(--green-dark); margin-bottom: 3px; }
+  .card-sub { font-size: 12px; color: #666; }
+  .card-badge { margin-left: auto; flex-shrink: 0; background: var(--green-pale); color: var(--green-dark); border: 1.5px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+
+  .coming-soon { background: #f9f9f9; border: 2px dashed #ccc; border-radius: 14px; padding: 18px 22px; display: flex; align-items: center; gap: 18px; opacity: .6; }
+  .coming-soon .card-title { color: #888; }
+
+  footer { text-align: center; font-size: 12px; color: #999; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🔬 7th Grade Science — Student Activities</h1>
+  <p>Click any activity below to open it. Read the directions on each page before you start!</p>
+  <div class="hdr-tags">
+    <span class="tag">📚 mslwscience-ops</span>
+    <span class="tag">🎯 Ohio Standards</span>
+    <span class="tag">🖥️ Works on any browser</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="unit-block">
+    <div class="unit-label">🌍 Unit 6 — Biomes</div>
+
+    <a class="activity-card" href="unit6-biomes/boundless_biomes_close_reading_v2.html">
+      <div class="card-icon">📖</div>
+      <div>
+        <div class="card-title">Boundless Biomes — Full Close Reading Activity</div>
+        <div class="card-sub">All 4 sections · Drag-and-drop · Based on ASU Boundless Biomes article</div>
+      </div>
+      <div class="card-badge">4 Sections</div>
+    </a>
+
+    <a class="activity-card" href="unit6-biomes/section601_biome_activity_v2.html">
+      <div class="card-icon">📝</div>
+      <div>
+        <div class="card-title">Section 6.01 — What Is a Biome? (Full Lesson Activity)</div>
+        <div class="card-sub">Vocabulary · Key characteristics · Biome overview · Biotic vs. Abiotic sort</div>
+      </div>
+      <div class="card-badge">4 Sections</div>
+    </a>
+
+    <a class="activity-card" href="unit6-biomes/what_is_a_biome_standalone.html">
+      <div class="card-icon">🌿</div>
+      <div>
+        <div class="card-title">What Is a Biome? — Quick Activity</div>
+        <div class="card-sub">Short fill-in-the-blank · Based on ASU article · Section 1 only</div>
+      </div>
+      <div class="card-badge">Quick</div>
+    </a>
+
+  </div>
+
+  <div class="unit-block">
+    <div class="unit-label">🌤️ Unit 4 — Atmosphere</div>
+    <div class="coming-soon">
+      <div class="card-icon">🚧</div>
+      <div>
+        <div class="card-title">Activities coming soon!</div>
+        <div class="card-sub">Check back here when your teacher shares a link.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>mslwscience-ops · 7th-Science · 2026</footer>
+
+</body>
+</html>
