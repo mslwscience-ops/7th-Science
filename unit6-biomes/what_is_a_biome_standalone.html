@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is a Biome? — Close Reading</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Merriweather:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a4a2e;
+    --green-mid:  #2d7a4f;
+    --green-light:#4caf78;
+    --green-pale: #e8f5ee;
+    --gold-bg:    #fff8e1;
+    --red:        #c0392b;
+    --red-pale:   #fdecea;
+    --bg:         #f4f9f6;
+    --border:     #b2d4be;
+    --text:       #1c2e24;
+    --shadow:     0 4px 16px rgba(26,74,46,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 60px; }
+
+  header { background: linear-gradient(120deg, var(--green-dark) 0%, var(--green-mid) 100%); color: white; padding: 26px 32px 20px; }
+  .hdr-eyebrow { font-size: 11px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: #74c69d; margin-bottom: 6px; }
+  header h1 { font-family: 'Merriweather', serif; font-size: clamp(20px,3.5vw,28px); font-weight: 700; margin-bottom: 5px; }
+  header p { font-size: 13px; opacity: .8; }
+  .hdr-tags { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 12px; font-size: 11px; font-weight: 700; }
+
+  .how-to { background: var(--gold-bg); border-bottom: 2px solid #f0d080; padding: 11px 32px; font-size: 13px; color: #5a3e00; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .how-to strong { font-weight: 900; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px; display: flex; flex-direction: column; gap: 24px; }
+
+  .prog-row { display: flex; align-items: center; gap: 14px; background: white; border-radius: 14px; border: 2px solid var(--border); padding: 14px 20px; box-shadow: var(--shadow); }
+  .prog-lbl { font-weight: 900; font-size: 13px; color: var(--green-dark); white-space: nowrap; }
+  .prog-bg { flex: 1; height: 11px; background: var(--green-pale); border-radius: 10px; border: 2px solid var(--border); overflow: hidden; }
+  .prog-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green-light), var(--green-mid)); border-radius: 10px; transition: width .4s ease; }
+  .prog-ct { font-weight: 900; font-size: 13px; color: var(--green-mid); white-space: nowrap; }
+
+  .act-card { background: white; border-radius: 16px; border: 2px solid var(--border); box-shadow: var(--shadow); overflow: hidden; }
+  .act-head { display: flex; align-items: center; gap: 12px; padding: 15px 22px 13px; border-bottom: 2px solid var(--border); }
+  .act-num { width: 30px; height: 30px; border-radius: 50%; background: var(--green-dark); color: white; font-weight: 900; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .act-title { font-family: 'Merriweather', serif; font-size: 15px; font-weight: 700; color: var(--green-dark); }
+  .act-sub { font-size: 11.5px; color: #666; margin-top: 2px; }
+  .act-body { padding: 20px 22px; }
+
+  .bank-box { background: #eaf6ef; border: 2px dashed #8fcfa9; border-radius: 12px; padding: 13px 16px 10px; margin-bottom: 20px; }
+  .bank-lbl { font-size: 10px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--green-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .bank-lbl::after { content: ''; flex: 1; height: 1.5px; background: var(--border); border-radius: 2px; }
+  .bank { display: flex; flex-wrap: wrap; gap: 9px; min-height: 36px; }
+  .chip { background: var(--green-dark); color: white; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12.5px; padding: 7px 15px; border-radius: 30px; cursor: grab; user-select: none; transition: transform .15s, box-shadow .15s; box-shadow: 0 2px 8px rgba(26,74,46,0.20); white-space: nowrap; }
+  .chip:active { cursor: grabbing; }
+  .chip.dragging { opacity: .4; transform: scale(.93); }
+  .chip.used { background: #bbb; color: #888; cursor: default; pointer-events: none; box-shadow: none; }
+
+  .sent { font-family: 'Merriweather', serif; font-size: 14.5px; line-height: 2.4; margin-bottom: 8px; color: var(--text); }
+  .sent:last-of-type { margin-bottom: 0; }
+
+  .dz { display: inline-flex; align-items: center; justify-content: center; min-width: 120px; height: 34px; border-radius: 7px; border: 2.5px dashed var(--green-light); background: var(--green-pale); padding: 0 8px; vertical-align: middle; margin: 0 3px; font-weight: 800; font-size: 12.5px; color: var(--green-dark); transition: all .15s; cursor: default; position: relative; white-space: nowrap; }
+  .dz.hover   { background: #b7e4c7; border-color: var(--green-mid); transform: scale(1.03); }
+  .dz.filled  { border-style: solid; border-color: var(--green-mid); background: var(--green-pale); }
+  .dz.correct { border-color: var(--green-mid); background: #b7e4c7; }
+  .dz.wrong   { border-color: var(--red); background: var(--red-pale); animation: shake .3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+  .xbtn { position: absolute; right: -8px; top: -8px; width: 17px; height: 17px; border-radius: 50%; background: var(--red); color: white; font-size: 10px; font-weight: 900; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .15s; z-index: 5; }
+  .dz.filled:hover .xbtn { opacity: 1; }
+
+  .check-bar { display: flex; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-check { background: var(--green-mid); color: white; border: none; border-radius: 30px; padding: 10px 26px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13.5px; cursor: pointer; box-shadow: 0 3px 10px rgba(45,122,79,0.25); transition: all .15s; }
+  .btn-check:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .btn-reset { background: transparent; color: var(--green-mid); border: 2px solid var(--green-mid); border-radius: 30px; padding: 8px 20px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 13px; cursor: pointer; transition: all .15s; }
+  .btn-reset:hover { background: var(--green-pale); }
+  .badge { display: none; align-items: center; gap: 6px; font-weight: 800; font-size: 13.5px; padding: 7px 15px; border-radius: 30px; }
+  .badge.show { display: flex; }
+  .badge.pass    { background: #b7e4c7; color: var(--green-dark); }
+  .badge.partial { background: var(--gold-bg); color: #7a4f00; }
+  .badge.fail    { background: var(--red-pale); color: var(--red); }
+
+  .score-panel { display: none; background: white; border-radius: 16px; border: 2px solid var(--border); box-shadow: var(--shadow); padding: 22px 24px; }
+  .score-panel.show { display: block; }
+  .score-lbl { font-size: 10.5px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--green-mid); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .score-lbl::after { content: ''; flex: 1; height: 2px; background: var(--border); border-radius: 2px; }
+  .score-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 12px; margin-top: 14px; }
+  .s-box { background: var(--green-pale); border-radius: 10px; padding: 12px 14px; text-align: center; border: 2px solid var(--border); }
+  .s-box .num { font-size: 26px; font-weight: 900; color: var(--green-dark); line-height: 1; }
+  .s-box .lbl { font-size: 11px; color: #666; margin-top: 4px; font-weight: 600; }
+  #scoreMsg { margin-top: 14px; font-weight: 800; font-size: 15px; color: var(--green-dark); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-eyebrow">📖 Close Reading Activity</div>
+  <h1>Boundless Biomes — What Is a Biome?</h1>
+  <p>Read the article at <strong>askabiologist.asu.edu/explore/biomes</strong>, then drag answers into each blank.</p>
+  <div class="hdr-tags">
+    <span class="tag">🎯 Ohio Standard 7.LS.2</span>
+    <span class="tag">📅 April 21, 2026</span>
+    <span class="tag">🌿 Section 6.01</span>
+  </div>
+</header>
+
+<div class="how-to">
+  <span>✋</span>
+  <strong>Directions:</strong>
+  <span>Read the article first. Then drag word chips from the Word Bank into each blank. Click ✕ on a chip to remove it.</span>
+</div>
+
+<div class="wrap">
+
+  <div class="prog-row">
+    <div class="prog-lbl">🌱 Progress</div>
+    <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-ct" id="progCt">0 / 0</div>
+  </div>
+
+  <div class="act-card">
+    <div class="act-head">
+      <div class="act-num">1</div>
+      <div>
+        <div class="act-title">What Is a Biome? — Fill in the Blanks</div>
+        <div class="act-sub">Use the article's definition and opening paragraphs to complete each sentence.</div>
+      </div>
+    </div>
+    <div class="act-body">
+
+      <div class="bank-box">
+        <div class="bank-lbl">📗 Word Bank</div>
+        <div class="bank" id="wordBank"></div>
+      </div>
+
+      <p class="sent">A <span class="dz" data-ans="biome" id="q1"></span> is a type of environment defined by the types of <span class="dz" data-ans="organisms" id="q2"></span> that live there.</p>
+      <p class="sent">We can also think of biomes as <span class="dz" data-ans="life zones" id="q3"></span> because the prefix "bio" means life.</p>
+      <p class="sent">Scientists group environments based on <span class="dz" data-ans="plant and animal life" id="q4"></span> and how they survive in that part of the world.</p>
+      <p class="sent">The number of biomes can range from <span class="dz" data-ans="5 to 20" id="q5"></span>, depending on how broadly or narrowly you define them.</p>
+      <p class="sent">Biome categories can be <span class="dz" data-ans="broad or narrow" id="q6"></span> — for example, all forest types could belong in one group or be split into several different biomes.</p>
+
+      <div class="check-bar">
+        <button class="btn-check" onclick="checkAll()">✓ Check Answers</button>
+        <button class="btn-reset" onclick="resetAll()">↺ Start Over</button>
+        <div class="badge" id="badge"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="score-panel" id="scorePanel">
+    <div class="score-lbl">📊 Your Score</div>
+    <div class="score-grid">
+      <div class="s-box"><div class="num" id="sc">0</div><div class="lbl">Correct ✅</div></div>
+      <div class="s-box"><div class="num" id="sw">0</div><div class="lbl">Incorrect ❌</div></div>
+      <div class="s-box"><div class="num" id="se">0</div><div class="lbl">Skipped ⬜</div></div>
+      <div class="s-box"><div class="num" id="sp">0%</div><div class="lbl">Score</div></div>
+    </div>
+    <p id="scoreMsg"></p>
+  </div>
+
+</div>
+
+<script>
+const words = ["biome","organisms","life zones","plant and animal life","5 to 20","broad or narrow"];
+let ctr = 0;
+
+function buildBank() {
+  const bank = document.getElementById('wordBank');
+  words.forEach(w => {
+    const id = 'chip_' + (ctr++);
+    const c = document.createElement('div');
+    c.className = 'chip'; c.id = id; c.dataset.word = w; c.textContent = w;
+    c.draggable = true;
+    c.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', id); setTimeout(() => c.classList.add('dragging'), 0); });
+    c.addEventListener('dragend', () => c.classList.remove('dragging'));
+    bank.appendChild(c);
+  });
+  updateProg();
+}
+
+function initZones() {
+  document.querySelectorAll('.dz').forEach(z => {
+    z.innerHTML = '';
+    const ph = document.createElement('span'); ph.className = 'ph'; ph.textContent = 'drop here'; z.appendChild(ph);
+    const xb = document.createElement('button'); xb.className = 'xbtn'; xb.textContent = '✕';
+    xb.onclick = () => { if (z.dataset.placed) ret(z.dataset.placed); };
+    z.appendChild(xb);
+  });
+}
+
+function setupZones() {
+  document.querySelectorAll('.dz').forEach(z => {
+    z.addEventListener('dragover', e => { e.preventDefault(); z.classList.add('hover'); });
+    z.addEventListener('dragleave', () => z.classList.remove('hover'));
+    z.addEventListener('drop', e => {
+      e.preventDefault(); z.classList.remove('hover');
+      const id = e.dataTransfer.getData('text/plain');
+      const chip = document.getElementById(id);
+      if (!chip) return;
+      if (z.dataset.placed) ret(z.dataset.placed);
+      place(id, z);
+    });
+  });
+}
+
+function place(chipId, zone) {
+  const chip = document.getElementById(chipId);
+  if (!chip) return;
+  chip.classList.add('used'); chip.draggable = false;
+  zone.dataset.placed = chipId;
+  zone.classList.add('filled'); zone.classList.remove('correct','wrong');
+  const ph = zone.querySelector('.ph'); if (ph) ph.style.display = 'none';
+  Array.from(zone.childNodes).forEach(n => { if (n.nodeType === 3) n.remove(); });
+  const xb = zone.querySelector('.xbtn');
+  const txt = document.createTextNode(chip.dataset.word);
+  if (xb) zone.insertBefore(txt, xb); else zone.appendChild(txt);
+  updateProg();
+}
+
+function ret(chipId) {
+  const chip = document.getElementById(chipId);
+  if (!chip) return;
+  chip.classList.remove('used'); chip.draggable = true;
+  document.querySelectorAll('[data-placed="'+chipId+'"]').forEach(z => {
+    z.removeAttribute('data-placed');
+    z.classList.remove('filled','correct','wrong');
+    Array.from(z.childNodes).forEach(n => { if (n.nodeType === 3) n.remove(); });
+    const ph = z.querySelector('.ph'); if (ph) ph.style.display = '';
+  });
+  updateProg();
+}
+
+function checkAll() {
+  const zones = document.querySelectorAll('.dz');
+  let ok=0, wrong=0, empty=0, total=0;
+  zones.forEach(z => {
+    total++;
+    if (!z.dataset.placed) { empty++; return; }
+    const chip = document.getElementById(z.dataset.placed);
+    const ans = chip ? chip.dataset.word : '';
+    if (ans.toLowerCase() === z.dataset.ans.toLowerCase()) { z.classList.add('correct'); z.classList.remove('wrong'); ok++; }
+    else { z.classList.add('wrong'); z.classList.remove('correct'); wrong++; }
+  });
+  const pct = Math.round(ok/total*100);
+  document.getElementById('sc').textContent = ok;
+  document.getElementById('sw').textContent = wrong;
+  document.getElementById('se').textContent = empty;
+  document.getElementById('sp').textContent = pct+'%';
+  const msgs = [[100,'🎉 Perfect! Great close reading!'],[85,'🌿 Nice work! Check the red blanks.'],[65,'📖 Good effort! Re-read those sections.'],[0,'🔍 Keep going! Read the article again carefully.']];
+  document.getElementById('scoreMsg').textContent = msgs.find(([t]) => pct >= t)[1];
+  const badge = document.getElementById('badge');
+  badge.classList.add('show');
+  if (pct===100)   { badge.className='badge show pass';    badge.textContent='✅ Perfect! '+ok+'/'+total; }
+  else if(pct>=65) { badge.className='badge show partial'; badge.textContent='⚠️ '+ok+'/'+total+' correct'; }
+  else             { badge.className='badge show fail';    badge.textContent='❌ '+ok+'/'+total+' — try again!'; }
+  document.getElementById('scorePanel').classList.add('show');
+  document.getElementById('scorePanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function resetAll() {
+  document.querySelectorAll('[data-placed]').forEach(z => ret(z.dataset.placed));
+  document.querySelectorAll('.dz').forEach(z => z.classList.remove('correct','wrong','filled'));
+  document.getElementById('badge').classList.remove('show');
+  document.getElementById('scorePanel').classList.remove('show');
+  updateProg();
+}
+
+function updateProg() {
+  const all = document.querySelectorAll('.dz');
+  const filled = Array.from(all).filter(z => z.dataset.placed).length;
+  document.getElementById('progFill').style.width = (filled/all.length*100)+'%';
+  document.getElementById('progCt').textContent = filled+' / '+all.length;
+}
+
+initZones(); buildBank(); setupZones(); updateProg();
+</script>
+</body>
+</html>
